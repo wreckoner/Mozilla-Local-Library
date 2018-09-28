@@ -7,6 +7,12 @@
   {% if author.date_of_death %}
   <p><strong>Died:</strong> {{ author.date_of_death }}</p>
   {% endif %}
+  {% if perms.catalog.delete_author %}
+  <p>
+    <a class="btn btn-info" href="{% url 'author_update' author.id %}">Update author</a>
+    <a class="btn btn-danger" href="{% url 'author_delete' author.id %}">Delete author</a>
+  </p>
+  {% endif %}
 
   <div style="margin-left:20px;margin-top:20px">
     <h4>Books</h4>
