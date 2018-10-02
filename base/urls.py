@@ -35,7 +35,7 @@ urlpatterns += [
 
 #Add Django site authentication urls (for login, logout, password management)
 urlpatterns += [
-    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('django.contrib.auth.urls'), kwargs={'redirect_authenticated_user': True}),
 ]
 
 # Use static() to add url mapping to serve static files during development (only)

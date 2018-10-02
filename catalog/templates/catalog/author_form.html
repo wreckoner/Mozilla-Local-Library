@@ -1,12 +1,16 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <form action="" method="post">
+  <form action="" method="POST">
     {% csrf_token %}
     <table>
     {{ form.as_table }}
     </table>
       <input class="btn btn-primary" type="submit" value="Submit">
+      {% if author %}
       <a class="btn btn-secondary" href="{% url 'author-detail' author.id %}">Cancel</a>
+      {% else %}
+      <a class="btn btn-secondary" href="{% url 'index' %}">Cancel</a>
+      {% endif %}
   </form>
 {% endblock %}
