@@ -7,7 +7,7 @@
 <p>Are you sure you want to delete the author: {{ author }}?</p>
 
 <form method="POST">{% csrf_token %}
-  <input class="btn btn-primary" type="submit" value="Yes, delete.">
+  <input class="btn btn-danger" type="submit" value="Yes, delete.">
   <a class="btn btn-secondary" href="{% url 'author-detail' author.id %}">Cancel</a>
 </form>
 

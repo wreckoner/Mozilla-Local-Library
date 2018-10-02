@@ -1,13 +1,15 @@
 {% extends "base_generic.html" %}
 
+{% block title %}<title>{% if book %}Delete book - {{book}}{% else %}Add book{% endif %}</title>{% endblock %}
+
 {% block content %}
 
 <h1>Delete Book</h1>
 
-<p>Are you sure you want to delete the Book: {{ book }}?</p>
+<p>Are you sure you want to delete the book: {{ book }}?</p>
 
 <form method="POST">{% csrf_token %}
-  <input class="btn btn-primary" type="submit" value="Yes, delete.">
+  <input class="btn btn-danger" type="submit" value="Yes, delete.">
   <a class="btn btn-secondary" href="{% url 'book-detail' book.id %}">Cancel</a>
 </form>
 

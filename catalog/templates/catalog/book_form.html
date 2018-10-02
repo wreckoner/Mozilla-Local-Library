@@ -1,19 +1,13 @@
-{% extends "base_generic.html" %}
+{% extends 'base_generic.html' %}
 
 {% block title %}
-<title>Update book - {% if book %}{{book}}{% else %}Add new book{% endif %}</title>
+<title>{% if book %}Update Book - {{book}}{% else %}Add Book{% endif %}</title>
 {% endblock %}
 
 {% block content %}
-<form method="POST">{% csrf_token %}
-  <table>
-    {{ form.as_table }}
-  </table>
-  <input class="btn btn-primary" type="submit" value="Add Book"/>
-  {% if book %}
-  <a class="btn btn-secondary" href="{% url 'book-detail' book.id %}">Cancel</a>
-  {% else %}
-  <a class="btn btn-secondary" href="{% url 'index' %}">Cancel</a>
-  {% endif %}
+<form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input class="btn btn-primary" type="submit" value="{% if book %}Update book{% else %}Add book{% endif %}">
+    <a class="btn btn-secondary" href="{% if book %}{% url 'book-detail' book.id %}{% else %}{% url 'books' %}{% endif %}">Cancel</a>
 </form>
 {% endblock %}
