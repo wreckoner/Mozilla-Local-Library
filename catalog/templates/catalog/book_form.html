@@ -6,8 +6,10 @@
 
 {% block content %}
 <form method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input class="btn btn-primary" type="submit" value="{% if book %}Update book{% else %}Add book{% endif %}">
-    <a class="btn btn-secondary" href="{% if book %}{% url 'book-detail' book.id %}{% else %}{% url 'books' %}{% endif %}">Cancel</a>
+  <table>
+    {{ form.as_table }}
+  </table>
+  <input class="btn btn-primary" type="submit" value="{% if book %}Update book{% else %}Add book{% endif %}">
+  <a class="btn btn-secondary" href="{% if book %}{% url 'book-detail' book.id %}{% else %}{% url 'books' %}{% endif %}">Cancel</a>
 </form>
 {% endblock %}
